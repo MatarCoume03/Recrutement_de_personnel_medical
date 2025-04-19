@@ -16,74 +16,64 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::prefix('/RecrutementMedical')->name('RecruitementMedical')->group(function(){
     //Les routes pour les utilisateurs
     Route::get('/utilisateurs', function(){
-        $utilisateur =  \App\Models\Utilisateur::all();
-        dd($utilisateur);
-        /*$utilisateur->nom = "Gueye";
-        $utilisateur->prenom = "Salymata";
-        $utilisateur->email = "saly03@outlook.com";
-        $utilisateur->mot_de_passe = "fleur0535";
-        $utilisateur->genre_id = 2;
-        $utilisateur->save();
-        return $utilisateur;*/
+        $utilisateur = \App\Models\Utilisateur::create([
+            'nom' => 'Fall',
+            'prenom' => 'Ousmane',
+            'email' => 'fallndiagayaram@hotmail.com',
+            'mot_de_passe' => 'Fall1234',
+            'genre_id' => 1
+        ]);
         return $utilisateur;
     });
     //Les routes pour les administrateurs
     Route::get('/administrateurs', function(){
-        /*$admin = new \App\Models\Administrateur();
-        $admin->id = 2;
-        $admin->niveau_acces = "Offer_admin";
-        $admin->save();
-        return $admin;*/
-        return \App\Models\Administrateur::all();
+       
+        $admin = \App\Models\Administrateur::find(1);
+        return $admin;
     });
     //Les routes pour les recruteurs
     Route::get('/recruteurs', function(){
-        /*$recruteur = new \App\Models\Recruteur();
-        $recruteur->id = 3;
-        $recruteur->save();
-        return $recruteur;*/
+       $recruteur = \App\Models\Recruteur::create([
+        'id' => 2
+       ]);
         return \App\Models\Recruteur::all();
     });
     //les routes pour les candidats
     Route::get('/candidats', function(){
-        /*$candidat = new \App\Models\Candidat();
-        $candidat->id = 4;
-        $candidat->save();
-        return $candidat;*/
+       $candidat = \App\Models\Candidat::create([
+        'id' => 5
+       ]);
         return App\Models\Candidat::all();
     });
     //Les routes pour les messages
     Route::get('/messages', function(){
-        /*$message = new \App\Models\Message();
-        $message->recruteur_id = 3;
-        $message->candidat_id = 4;
-        $message->contenu = "Bonsoir Monsieur Sene, je suis bien interessee par votre offre d'emploi";
-        $message->date_envoi = Now();
-        $message->save();
-        return $message;*/
+       $message = \App\Models\Message::create([
+        'recruteur_id' => 2,
+        'candidat_id' => 4,
+        'contenu' => 'Merci Beaucoup madame Ndiaye pour le recrutement, je vous suis extremement reconnaissant',
+        'date_envoi' => Now()
+       ]);
         return \App\Models\Message::all();
     });
     //Les routes pour les candidatures
     Route::get('/candidatures', function(){
-        /*$candidature = new \App\Models\Candidature();
-        $candidature->candidat_id = 4;
-        $candidature->offre_emploi_id = 1;
-        $candidature->statut = "En cours de traitement";
-        $candidature->date_depot = Now();
-        $candidature->save();
-        return $candidature;*/
+        $candidature = \App\Models\Candidature::create([
+            'candidat_id' => 4,
+            'offre_emploi_id' => 2,
+            'statut' => 'accepte',
+            'date_depot' => Now()
+        ]);
         return  \App\Models\Candidature::all();
     });
     //Les routes pour les offres d'emploi
     Route::get('/offre_emplois', function(){
-        /*$offre = new \App\Models\Offre_emploi();
-        $offre->recruteur_id = 3;
-        $offre->titre = "Masseur-Kinésithérapeute D.E. – CDI – Cabinet de Rééducation";
-        $offre->description = "Recherche kinésithérapeute spécialisé en rééducation post-opératoire pour rejoindre notre équipe. Temps plein avec possibilité de gestion autonome de dossier. Matériel de pointe (KinTech, ultrasons).";
-        $offre->statut = "En cours";
-        $offre->date_publication = Now();
-        $offre->save();
-        return $offre;*/
+       $offre = \App\Models\Offre_emploi::create([
+        'recruteur_id' => 2,
+        'titre' => 'Recherche Sage-Femme (CDD 6 mois)',
+        'description' => 'Pas assez d\'inpiration pour la description pff',
+        'statut' => 'En cours',
+        'date_publication' => Now()
+       ]);
         return \App\Models\Offre_emploi::all();
     });
 });
