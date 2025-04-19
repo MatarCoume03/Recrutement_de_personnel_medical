@@ -12,7 +12,7 @@ class CreateCandidaturesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('candidat_id');
             $table->unsignedBigInteger('offre_emploi_id');
-            $table->string('statut', 50);
+            $table->enum('statut', ['accepte','rejete','En cours de traitement']);
             $table->date('date_depot');
             $table->timestamps();
 
