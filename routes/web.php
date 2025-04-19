@@ -33,27 +33,47 @@ Route::prefix('/RecrutementMedical')->name('RecruitementMedical')->group(functio
     });
     //Les routes pour les recruteurs
     Route::get('/recruteurs', function(){
-       
+       $recruteur = \App\Models\Recruteur::create([
+        'id' => 2
+       ]);
         return \App\Models\Recruteur::all();
     });
     //les routes pour les candidats
     Route::get('/candidats', function(){
-       
+       $candidat = \App\Models\Candidat::create([
+        'id' => 5
+       ]);
         return App\Models\Candidat::all();
     });
     //Les routes pour les messages
     Route::get('/messages', function(){
-       
+       $message = \App\Models\Message::create([
+        'recruteur_id' => 2,
+        'candidat_id' => 4,
+        'contenu' => 'Merci Beaucoup madame Ndiaye pour le recrutement, je vous suis extremement reconnaissant',
+        'date_envoi' => Now()
+       ]);
         return \App\Models\Message::all();
     });
     //Les routes pour les candidatures
     Route::get('/candidatures', function(){
-        
+        $candidature = \App\Models\Candidature::create([
+            'candidat_id' => 4,
+            'offre_emploi_id' => 2,
+            'statut' => 'accepte',
+            'date_depot' => Now()
+        ]);
         return  \App\Models\Candidature::all();
     });
     //Les routes pour les offres d'emploi
     Route::get('/offre_emplois', function(){
-       
+       $offre = \App\Models\Offre_emploi::create([
+        'recruteur_id' => 2,
+        'titre' => 'Recherche Sage-Femme (CDD 6 mois)',
+        'description' => 'Pas assez d\'inpiration pour la description pff',
+        'statut' => 'En cours',
+        'date_publication' => Now()
+       ]);
         return \App\Models\Offre_emploi::all();
     });
 });
