@@ -16,15 +16,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::prefix('/RecrutementMedical')->name('RecruitementMedical')->group(function(){
     //Les routes pour les utilisateurs
     Route::get('/utilisateurs', function(){
-        /*$utilisateur = new \App\Models\Utilisateur();
-        $utilisateur->nom = "Gueye";
+        $utilisateur =  \App\Models\Utilisateur::all();
+        dd($utilisateur);
+        /*$utilisateur->nom = "Gueye";
         $utilisateur->prenom = "Salymata";
         $utilisateur->email = "saly03@outlook.com";
         $utilisateur->mot_de_passe = "fleur0535";
         $utilisateur->genre_id = 2;
         $utilisateur->save();
         return $utilisateur;*/
-        return \App\Models\Utilisateur::all(['nom', 'prenom', 'email',]);
+        return $utilisateur;
     });
     //Les routes pour les administrateurs
     Route::get('/administrateurs', function(){
